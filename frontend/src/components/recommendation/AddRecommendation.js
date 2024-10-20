@@ -7,7 +7,7 @@ const AddRecommendation = ({ cvId, onRecommendationAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://projet-react-cv-dev.onrender.com/api/recommendations', {
+      await axios.post('https://projet-react-cv-dev.onrender.com/api/recommendations', {
         message: recommendationText,
         cvId: cvId,
       }, {
