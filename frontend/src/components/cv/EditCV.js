@@ -16,7 +16,7 @@ const EditCV = () => {
   useEffect(() => {
     const fetchCV = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/cvs/${id}`, {
+        const res = await axios.get(`http://projet-react-cv-dev.onrender.com/api/cvs/${id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
@@ -36,7 +36,7 @@ const EditCV = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/cvs/${id}`, formData, {
+      await axios.put(`http://projet-react-cv-dev.onrender.com/api/cvs/${id}`, formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },

@@ -40,7 +40,7 @@ const CreateCV = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/cvs', formData, {
+      await axios.post('https://projet-react-cv-dev.onrender.com/api/cvs', formData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

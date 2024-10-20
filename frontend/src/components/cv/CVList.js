@@ -11,7 +11,7 @@ const CVList = () => {
 
   const fetchCVs = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/cvs', {
+      const res = await axios.get('https://projet-react-cv-dev.onrender.com/api/cvs', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -24,7 +24,7 @@ const CVList = () => {
 
   const fetchRecommendations = async (cvId) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/recommendations/${cvId}`, {
+      const res = await axios.get(`http://projet-react-cv-dev.onrender.com/api/recommendations/${cvId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -49,7 +49,7 @@ const CVList = () => {
 
   const searchCVs = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cvs/search?name=${searchQuery}`, {
+      const res = await axios.get(`http://projet-react-cv-dev.onrender.com/api/cvs/search?name=${searchQuery}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
