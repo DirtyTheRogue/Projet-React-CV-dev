@@ -55,6 +55,7 @@ const CVList = () => {
         },
       });
       setCvs(res.data);
+      console.log(res.data);
     } catch (err) {
       console.error(err);
     }

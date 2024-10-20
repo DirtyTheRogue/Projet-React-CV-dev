@@ -9,7 +9,7 @@ const ViewCV = () => {
   useEffect(() => {
     const fetchCV = async () => {
       try {
-        const res = await axios.get(`http://projet-react-cv-dev.onrender.com/api/cvs/${id}`, {
+        const res = await axios.get(`https://projet-react-cv-dev.onrender.com/api/cvs/${id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },

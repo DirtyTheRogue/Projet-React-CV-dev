@@ -8,7 +8,7 @@ const UserCVList = () => {
   useEffect(() => {
     const fetchUserCvs = async () => {
       try {
-        const res = await axios.get('http://projet-react-cv-dev.onrender.com/api/cvs/user', {
+        const res = await axios.get('https://projet-react-cv-dev.onrender.com/api/cvs/user', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
@@ -24,7 +24,7 @@ const UserCVList = () => {
   const toggleVisibility = async (cvId, currentVisibility) => {
     try {
       const res = await axios.put(
-        `http://projet-react-cv-dev.onrender.com/api/cvs/${cvId}`, 
+        `https://projet-react-cv-dev.onrender.com/api/cvs/${cvId}`, 
         { visible: !currentVisibility },  // On inverse la visibilité actuelle
         {
           headers: {
