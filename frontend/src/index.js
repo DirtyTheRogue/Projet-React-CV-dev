@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0053653b38a6283d146602f9bba7c0a2c2ab3041
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
