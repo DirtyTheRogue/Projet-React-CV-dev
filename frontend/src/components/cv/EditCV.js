@@ -36,6 +36,7 @@ const EditCV = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData); // Log to see if all fields are present
     try {
       const response = await axios.put(`https://projet-react-cv-dev.onrender.com/api/cvs/${id}`, formData, {
         headers: {
