@@ -27,6 +27,9 @@ const updateCv = async (req, res) => {
     const { cvId } = req.params;
     const { firstName, lastName, description, education, workExperience, visible } = req.body;
 
+    console.log("Data reçue:", req.body); // Pour vérifier ce qui est reçu
+
+
     try {
         const cv = await Cv.findOneAndUpdate(
             { _id: cvId, userId: req.user.id }, // S'assurer que seul l'auteur peut modifier son CV
@@ -40,6 +43,7 @@ const updateCv = async (req, res) => {
 
         res.json(cv);
     } catch (error) {
+        console.error("Erreur dans la mise à jour du CV:", error); // Pour aider au débogage
         res.status(500).json({ message: error });
     }
 };
