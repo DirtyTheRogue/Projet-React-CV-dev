@@ -4,11 +4,13 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 
 const EditCV = () => {
   const [formData, setFormData] = useState({
-    title: '',
+    firstName: '',
+    lastName: '',
     description: '',
-    skills: '',
-    experience: '',
+    education: '',
+    workExperience: '',
   });
+
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ const EditCV = () => {
     fetchCV();
   }, [id]);
 
-  const { title, description, skills, experience } = formData;
+  const { firstName, lastName, description, education, workExperience } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -54,20 +56,24 @@ const EditCV = () => {
       <h2>Modifier le CV</h2>
       <form onSubmit={onSubmit}>
         <div>
-          <label>Titre</label>
-          <input type="text" name="title" value={title} onChange={onChange} required />
+          <label>Prénom</label>
+          <input type="text" name="firstName" value={firstName} onChange={onChange} required />
+        </div>
+        <div>
+          <label>Nom</label>
+          <input type="text" name="lastName" value={lastName} onChange={onChange} required />
         </div>
         <div>
           <label>Description</label>
           <textarea name="description" value={description} onChange={onChange} required />
         </div>
         <div>
-          <label>Compétences</label>
-          <input type="text" name="skills" value={skills} onChange={onChange} required />
+          <label>Éducation</label>
+          <input type="text" name="education" value={education} onChange={onChange} required />
         </div>
         <div>
-          <label>Expérience</label>
-          <input type="text" name="experience" value={experience} onChange={onChange} required />
+          <label>Expérience professionnelle</label>
+          <input type="text" name="workExperience" value={workExperience} onChange={onChange} required />
         </div>
         <button type="submit">Modifier le CV</button>
       </form>
