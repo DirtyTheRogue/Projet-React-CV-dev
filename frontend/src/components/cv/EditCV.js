@@ -37,7 +37,7 @@ const EditCV = () => {
     e.preventDefault();
     console.log(formData); // Vérifie le contenu avant l'envoi
     try {
-      await axios.put(`https://projet-react-cv-dev.onrender.com/api/cvs/${id}`, formData, {
+      const response = await axios.put(`https://projet-react-cv-dev.onrender.com/api/cvs/${id}`, formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
