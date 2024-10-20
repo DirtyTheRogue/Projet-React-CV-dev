@@ -20,7 +20,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/users/register', formData);
+      const res = await axios.post('https://projet-react-cv-dev.onrender.com/api/users/register', formData);
       localStorage.setItem('token', res.data.token);
       navigate('/');  // Utilisation de navigate pour rediriger
     } catch (err) {
