@@ -55,31 +55,59 @@ const EditCV = () => {
       <form onSubmit={onSubmit}>
         <div>
           <label>Prénom</label>
-          <input type="text" name="firstName" value={firstName} onChange={onChange} required />
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+            required
+          />
         </div>
         <div>
           <label>Nom</label>
-          <input type="text" name="lastName" value={lastName} onChange={onChange} required />
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+            required
+          />
         </div>
         <div>
           <label>Description</label>
-          <textarea name="description" value={description} onChange={onChange} required />
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            required
+          />
         </div>
         <div>
           <label>Éducation</label>
-          <input type="text" name="education" value={education} onChange={onChange} required />
+          <input
+            type="text"
+            name="education"
+            value={formData.education}
+            onChange={(e) => setFormData({ ...formData, education: e.target.value })}
+            required
+          />
         </div>
         <div>
           <label>Expérience professionnelle</label>
-          <input type="text" name="workExperience" value={workExperience} onChange={onChange} required />
+          <input
+            type="text"
+            name="workExperience"
+            value={formData.workExperience}
+            onChange={(e) => setFormData({ ...formData, workExperience: e.target.value })}
+            required
+          />
         </div>
         <button type="submit">Modifier le CV</button>
       </form>
-
+  
       <div>
         <Link to="/">Menu Principal</Link>
       </div>
-
     </div>
   );
 };
