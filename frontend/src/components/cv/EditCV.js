@@ -7,8 +7,9 @@ const EditCV = () => {
     firstName: '',
     lastName: '',
     description: '',
-    education: '',
-    workExperience: '',
+    education: [{ degree: '', institution: '', year: '' }],
+    workExperience: [{ jobTitle: '', company: '', duration: '', description: '' }],
+    visible: false
   });
 
   const { id } = useParams();
@@ -30,20 +31,28 @@ const EditCV = () => {
     fetchCV();
   }, [id]);
 
-  const { firstName, lastName, description, education, workExperience } = formData;
+  const handleEducationChange = (index, event) => {
+    const values = [...formData.education];
+    values[index][event.target.name] = event.target.value;
+    setFormData({ ...formData, education: values });
+  };
+
+  const handleWorkExperienceChange = (index, event) => {
+    const values = [...formData.workExperience];
+    values[index][event.target.name] = event.target.value;
+    setFormData({ ...formData, workExperience: values });
+  };
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData); // Log to see if all fields are present
     try {
       const response = await axios.put(`https://projet-react-cv-dev.onrender.com/api/cvs/${id}`, formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      console.log('Réponse du serveur:', response); 
       navigate('/cvs');
     } catch (err) {
       console.error(err);
@@ -60,7 +69,7 @@ const EditCV = () => {
             type="text"
             name="firstName"
             value={formData.firstName}
-            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+            onChange={onChange}
             required
           />
         </div>
@@ -70,7 +79,7 @@ const EditCV = () => {
             type="text"
             name="lastName"
             value={formData.lastName}
-            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+            onChange={onChange}
             required
           />
         </div>
@@ -79,33 +88,74 @@ const EditCV = () => {
           <textarea
             name="description"
             value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            onChange={onChange}
             required
           />
         </div>
-        <div>
-          <label>Éducation</label>
-          <input
-            type="text"
-            name="education"
-            value={formData.education}
-            onChange={(e) => setFormData({ ...formData, education: e.target.value })}
-            required
-          />
-        </div>
-        <div>
-          <label>Expérience professionnelle</label>
-          <input
-            type="text"
-            name="workExperience"
-            value={formData.workExperience}
-            onChange={(e) => setFormData({ ...formData, workExperience: e.target.value })}
-            required
-          />
-        </div>
+
+        <h3>Éducation</h3>
+        {formData.education.map((edu, index) => (
+          <div key={index}>
+            <label>Diplôme</label>
+            <input
+              type="text"
+              name="degree"
+              value={edu.degree}
+              onChange={(e) => handleEducationChange(index, e)}
+            />
+            <label>Institution</label>
+            <input
+              type="text"
+              name="institution"
+              value={edu.institution}
+              onChange={(e) => handleEducationChange(index, e)}
+            />
+            <label>Année</label>
+            <input
+              type="text"
+              name="year"
+              value={edu.year}
+              onChange={(e) => handleEducationChange(index, e)}
+            />
+          </div>
+        ))}
+
+        <h3>Expérience professionnelle</h3>
+        {formData.workExperience.map((exp, index) => (
+          <div key={index}>
+            <label>Titre du poste</label>
+            <input
+              type="text"
+              name="jobTitle"
+              value={exp.jobTitle}
+              onChange={(e) => handleWorkExperienceChange(index, e)}
+            />
+            <label>Entreprise</label>
+            <input
+              type="text"
+              name="company"
+              value={exp.company}
+              onChange={(e) => handleWorkExperienceChange(index, e)}
+            />
+            <label>Durée</label>
+            <input
+              type="text"
+              name="duration"
+              value={exp.duration}
+              onChange={(e) => handleWorkExperienceChange(index, e)}
+            />
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={exp.description}
+              onChange={(e) => handleWorkExperienceChange(index, e)}
+            />
+          </div>
+        ))}
+
         <button type="submit">Modifier le CV</button>
       </form>
-  
+
       <div>
         <Link to="/">Menu Principal</Link>
       </div>
