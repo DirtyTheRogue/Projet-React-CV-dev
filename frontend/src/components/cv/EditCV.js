@@ -35,12 +35,14 @@ const EditCV = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData); // Vérifie le contenu avant l'envoi
     try {
       await axios.put(`https://projet-react-cv-dev.onrender.com/api/cvs/${id}`, formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
+      console.log('Réponse du serveur:', response); // Vérifie si le serveur retourne une erreur ou une réponse correcte
       navigate('/cvs');
     } catch (err) {
       console.error(err);
